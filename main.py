@@ -27,11 +27,11 @@ drop_animation = None #TODO: Implementar animação de queda de doce
 
 # Criando botões na área preta da máquina
 buttons = {
-    "R$1": pygame.Rect(700, 150, 100, 40),
-    "R$2": pygame.Rect(700, 200, 100, 40),
-    "R$5": pygame.Rect(700, 250, 100, 40),
-    "A": pygame.Rect(700, 350, 50, 50),
-    "B": pygame.Rect(750, 350, 50, 50),
+    "R$1": pygame.Rect(675, 150, 100, 40),
+    "R$2": pygame.Rect(675, 200, 100, 40),
+    "R$5": pygame.Rect(675, 250, 100, 40),
+    "A": pygame.Rect(675, 350, 50, 50),
+    "B": pygame.Rect(730, 350, 50, 50),
     "C": pygame.Rect(700, 410, 50, 50)
 }
 
@@ -100,14 +100,7 @@ while running:
 
         # Centraliza o texto dentro do botão
         text_rect = text.get_rect(center=rect.center)
-        screen.blit(text, text_rect.topleft)
-    
-
-    #for key, rect in buttons.items():
-    #    pygame.draw.rect(screen, BLUE if key in ["A", "B", "C"] and machine.balance >= machine.candies[key]["price"] else GREEN, rect)
-    #    text = font.render(key, True, WHITE)
-    #    screen.blit(text, (rect.x + 15, rect.y + 10))
-    
+        screen.blit(text, text_rect.topleft)    
     
     pygame.display.flip()
 
