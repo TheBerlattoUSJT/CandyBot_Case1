@@ -17,6 +17,7 @@ BLACK = (0, 0, 0)
 BLUE = (0, 100, 255)
 GREEN = (0, 200, 100)
 RED = (200, 50, 50)
+GREY = (191, 191, 189)
 
 font = pygame.font.Font(None, 24)
 
@@ -27,9 +28,9 @@ drop_animation = None #TODO: Implementar animação de queda de doce
 
 # Criando botões na área preta da máquina
 buttons = {
-    "R$1": pygame.Rect(675, 150, 100, 40),
-    "R$2": pygame.Rect(675, 200, 100, 40),
-    "R$5": pygame.Rect(675, 250, 100, 40),
+    "R$1": pygame.Rect(543, 200, 100, 40),
+    "R$2": pygame.Rect(543, 241, 100, 40),
+    "R$5": pygame.Rect(543, 282, 100, 40),
     "A": pygame.Rect(675, 350, 50, 50),
     "B": pygame.Rect(730, 350, 50, 50),
     "C": pygame.Rect(700, 410, 50, 50)
@@ -62,24 +63,20 @@ while running:
                             change = 0
 
     # Exibir saldo
-    balanceText = font.render(f"Saldo: R$ {machine.balance}", True, BLACK)
-    screen.blit(balanceText, (500, 600))
-
-    # Exibindo valores válidos
-    validMoneyLabel1 = font.render("Valores", True, WHITE)
-    validMoneyLabel2 = font.render("válidos:", True, WHITE)
+    balanceText1 = font.render(f"Saldo:", True, BLACK)
+    balanceText2 = font.render(f"R$ {machine.balance}", True, BLACK)
 
     # Obtendo as larguras dos textos para centralizar da melhor forma
-    text_width1, text_height1 = validMoneyLabel1.get_size()
-    text_width2, text_height2 = validMoneyLabel2.get_size()
-    
+    balance_text_width1, balance_text_height1 = balanceText1.get_size()
+    balance_text_width2, balance_text_height2 = balanceText2.get_size()
+
     # Colocando o texto no automato
     x_text = 565  
-    y_text = 117  
+    y_text = 118
 
     # Concatenando os textos verticalmente
-    screen.blit(validMoneyLabel1, (x_text, y_text))  
-    screen.blit(validMoneyLabel2, (x_text, y_text + 20))
+    screen.blit(balanceText1, (x_text, y_text))  
+    screen.blit(balanceText2, (x_text, y_text + 20))
 
     # Exibir tipos de doces
     candyTypeLabel = font.render("Tipos de doce:", True, BLACK)
@@ -103,7 +100,7 @@ while running:
 
     # Desenhando botões
     for key, rect in buttons.items():
-        pygame.draw.rect(screen, GREEN, rect)
+        pygame.draw.rect(screen, GREY, rect)
         text = font.render(key, True, WHITE)
 
         # Centraliza o texto dentro do botão
