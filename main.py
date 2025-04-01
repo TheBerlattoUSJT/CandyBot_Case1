@@ -18,7 +18,7 @@ BLUE = (0, 100, 255)
 GREEN = (0, 200, 100)
 RED = (200, 50, 50)
 
-font = pygame.font.Font(None, 36)
+font = pygame.font.Font(None, 24)
 
 machine = CandyMachine()
 purchased_candy = None
@@ -60,18 +60,26 @@ while running:
                         if machine.current_state == "Waiting":
                             purchased_candy = None
                             change = 0
-    
-    #pygame.draw.rect(screen, BLACK, (0, 0, 400, 400), 3)
-    #text = font.render("Candy Machine", True, BLACK)
-    #screen.blit(text, (150, 60))
 
     # Exibir saldo
     balanceText = font.render(f"Saldo: R$ {machine.balance}", True, BLACK)
     screen.blit(balanceText, (500, 600))
 
-    # Exibir valores válidos
-    validMoneyLabel = font.render("Valores válidos:", True, BLACK)
-    screen.blit(validMoneyLabel, (700, 120))
+    # Exibindo valores válidos
+    validMoneyLabel1 = font.render("Valores", True, WHITE)
+    validMoneyLabel2 = font.render("válidos:", True, WHITE)
+
+    # Obtendo as larguras dos textos para centralizar da melhor forma
+    text_width1, text_height1 = validMoneyLabel1.get_size()
+    text_width2, text_height2 = validMoneyLabel2.get_size()
+    
+    # Colocando o texto no automato
+    x_text = 565  
+    y_text = 117  
+
+    # Concatenando os textos verticalmente
+    screen.blit(validMoneyLabel1, (x_text, y_text))  
+    screen.blit(validMoneyLabel2, (x_text, y_text + 20))
 
     # Exibir tipos de doces
     candyTypeLabel = font.render("Tipos de doce:", True, BLACK)
