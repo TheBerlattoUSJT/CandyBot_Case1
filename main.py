@@ -28,12 +28,12 @@ drop_animation = None #TODO: Implementar animação de queda de doce
 
 # Criando botões na área preta da máquina
 buttons = {
-    "R$1": pygame.Rect(543, 200, 100, 40),
-    "R$2": pygame.Rect(543, 241, 100, 40),
-    "R$5": pygame.Rect(543, 282, 100, 40),
-    "A": pygame.Rect(675, 350, 50, 50),
-    "B": pygame.Rect(730, 350, 50, 50),
-    "C": pygame.Rect(700, 410, 50, 50)
+    "R$1": pygame.Rect(549, 160, 90, 35),
+    "R$2": pygame.Rect(549, 196, 90, 35),
+    "R$5": pygame.Rect(549, 232, 90, 35),
+    "A": pygame.Rect(545, 292, 50, 50),
+    "B": pygame.Rect(596, 292, 50, 50),
+    "C": pygame.Rect(545, 343, 100, 50)
 }
 
 
@@ -85,7 +85,7 @@ while running:
     # Exibir troco (se houver)
     if machine.returnChangeBalance != 0:
         returnChange = font.render(f"Troco: R$ {machine.returnChangeBalance}", True, BLACK)
-        screen.blit(returnChange, (700, 650))
+        screen.blit(returnChange, (540, 500))
 
     if purchased_candy:
         candy_text = font.render(f"Comprado: {purchased_candy}", True, RED)
