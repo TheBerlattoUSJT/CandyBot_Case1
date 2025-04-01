@@ -79,13 +79,13 @@ while running:
     screen.blit(balanceText2, (x_text, y_text + 20))
 
     # Exibir tipos de doces
-    candyTypeLabel = font.render("Tipos de doce:", True, BLACK)
-    screen.blit(candyTypeLabel, (700, 320))
+    candyTypeLabel = font.render("Tipo de doce:", True, BLACK)
+    screen.blit(candyTypeLabel, (542, 273))
 
     # Exibir troco (se houver)
     if machine.returnChangeBalance != 0:
         returnChange = font.render(f"Troco: R$ {machine.returnChangeBalance}", True, BLACK)
-        screen.blit(returnChange, (540, 500))
+        screen.blit(returnChange, (544, 410))
 
     if purchased_candy:
         candy_text = font.render(f"Comprado: {purchased_candy}", True, RED)
