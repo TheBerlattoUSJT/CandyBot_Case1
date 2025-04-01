@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Candy Vending Machine")
  
 # Carregando imagem da máquina e som
-machine_image = pygame.image.load("30751.jpg")
+machine_image = pygame.image.load("media/30751.jpg")
  
 # Fator de zoom (quanto maior o valor, maior o zoom)
 zoom_factor = 1.2  # Exemplo: 1.0 sem zoom, 1.2 aumenta a imagem em 20%
@@ -19,7 +19,7 @@ machine_image = pygame.transform.scale(
     machine_image, (int(WIDTH * zoom_factor), int(HEIGHT * zoom_factor))
 )
  
-pygame.mixer.music.load(r"som.mp3")
+pygame.mixer.music.load(r"media/som.mp3")
 pygame.mixer.music.set_volume(0.5)
  
 # Ajustando cores
@@ -40,9 +40,9 @@ coins = []  # Lista para armazenar animações de moedas
  
 # Carregar imagem dos doces e redimensioná-las
 candy_images = {
-    "A": pygame.image.load("refrigerante.jpg"),  
-    "B": pygame.image.load("chips.jpg"),   
-    "C": pygame.image.load("biscoito.jpg") 
+    "A": pygame.image.load("media/refrigerante.jpg"),  
+    "B": pygame.image.load("media/chips.jpg"),   
+    "C": pygame.image.load("media/biscoito.jpg") 
 }
  
 # Redimensionando as imagens dos doces (fator de redimensionamento)
