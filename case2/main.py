@@ -5,7 +5,7 @@ def start_elevator():  # <<< Tudo dentro dessa função agora
     pygame.init()
 
     # Definindo as dimensões da janela
-    WIDTH, HEIGHT = 550, 650
+    WIDTH, HEIGHT = 800, 700
     screen = pygame.display.set_mode((WIDTH + 6, HEIGHT))  # Ajuste no tamanho da janela
     pygame.display.set_caption("Elevador")  # Título da janela
 
@@ -39,11 +39,11 @@ def start_elevator():  # <<< Tudo dentro dessa função agora
 
     # Botões
     buttons = {
-        "T": pygame.Rect(430, 280, 40, 35),
-        "1": pygame.Rect(480, 280, 40, 35),
-        "2": pygame.Rect(430, 240, 40, 35),
-        "3": pygame.Rect(480, 240, 40, 35),
-        "confirmar": pygame.Rect(420, 350, 110, 35),
+        "T": pygame.Rect(630, 280, 40, 35),
+        "1": pygame.Rect(680, 280, 40, 35),
+        "2": pygame.Rect(630, 240, 40, 35),
+        "3": pygame.Rect(680, 240, 40, 35),
+        "confirmar": pygame.Rect(620, 350, 110, 35),
     }
 
     # Estado inicial
@@ -129,4 +129,3 @@ def start_elevator():  # <<< Tudo dentro dessa função agora
 
         pygame.display.flip()
 
-    pygame.quit()
