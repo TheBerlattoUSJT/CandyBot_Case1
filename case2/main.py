@@ -1,7 +1,7 @@
 import pygame
 import time
 
-def start_elevator():  # <<< Tudo dentro dessa função agora
+def start_elevator():
     pygame.init()
 
     # Definindo as dimensões da janela
@@ -26,6 +26,8 @@ def start_elevator():  # <<< Tudo dentro dessa função agora
     ele1_image, ele1_rect = load_and_scale_image("case2/ele1.jpg")
     ele2_image, ele2_rect = load_and_scale_image("case2/ele2.jpg")
     ele3_image, ele3_rect = load_and_scale_image("case2/ele3.jpg")
+    porta_aberta, porta_aberta_rect = load_and_scale_image("case2/ele1.jpg")
+    porta_fechada, porta_fechada_rect = load_and_scale_image("case2/ele3.jpg")
 
     # Cores
     WHITE = (255, 255, 255)
@@ -66,6 +68,48 @@ def start_elevator():  # <<< Tudo dentro dessa função agora
             pygame.display.flip()
             time.sleep(0.3)
 
+    # Função para animar a movimentação do elevador
+# Função para animar a movimentação do elevador
+    def mover_elevador(andar_destino, _porta_aberta):
+        screen.fill(WHITE)
+        screen.blit(painel_image, painel_rect.topleft)
+
+        # Mover o elevador até o andar
+        if andar_destino == 3:
+            screen.blit(ele3_image, ele3_rect.topleft)
+            label = "Andar 3"
+        elif andar_destino == 2:
+            screen.blit(ele2_image, ele2_rect.topleft)
+            label = "Andar 2"
+        elif andar_destino == 1:
+            screen.blit(ele1_image, ele1_rect.topleft)
+            label = "Andar 1"
+        else:
+            screen.blit(ele1_image, ele1_rect.topleft)
+            label = "Térreo"
+
+        # Exibir animação das portas
+        if _porta_aberta:
+            # Porta aberta
+            for i in range(5):
+                screen.blit(porta_aberta, porta_aberta_rect.topleft)
+                pygame.display.flip()
+                time.sleep(0.1)
+        else:
+            # Porta fechada
+            for i in range(5):
+                screen.blit(porta_fechada, porta_fechada_rect.topleft)
+                pygame.display.flip()
+                time.sleep(0.1)
+
+        # Mostrar o texto do andar atual
+        andar_text = font_large.render(label, True, BLACK)
+        text_rect = andar_text.get_rect(center=(WIDTH // 3, HEIGHT // 4))
+        screen.blit(andar_text, text_rect)
+
+        pygame.display.flip()
+        time.sleep(1)  # Simula a animação da movimentação do elevador
+
     # Loop principal
     running = True
     while running:
@@ -88,7 +132,9 @@ def start_elevator():  # <<< Tudo dentro dessa função agora
                             ultimo_andar = None
                             while pilha_andar:
                                 ultimo_andar = pilha_andar.pop()
-                                exibir_andar(ultimo_andar)
+                                mover_elevador(ultimo_andar, False)  # Começa com as portas fechadas
+                                mover_elevador(ultimo_andar, True)  # Começa com as portas fechadas
+                                mover_elevador(ultimo_andar, False)  # Começa com as portas fechadas
 
                             if ultimo_andar is not None:
                                 screen.fill(WHITE)
@@ -128,4 +174,3 @@ def start_elevator():  # <<< Tudo dentro dessa função agora
                     screen.blit(text, text_rect.topleft)
 
         pygame.display.flip()
-
